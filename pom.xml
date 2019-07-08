@@ -48,6 +48,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<!--    repository and plugin repository added by me-->
+    <repositories>
+        <repository>
+            <id>spring-repo</id>
+            <name>Spring Repository</name>
+            <url>https://repo.spring.io/release</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-plugins-release</id>
+            <url>https://repo.spring.io/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
