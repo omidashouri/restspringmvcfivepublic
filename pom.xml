@@ -11,7 +11,7 @@
     <groupId>ir.omidashouri</groupId>
     <artifactId>restspringmvcfive</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Restful_Webservice_Spring_MVC_5_Ver_1</name>
+    <name>restspringmvcfive</name>
     <description>RESTful Webservices with Spring MVC 5 Guru</description>
 
     <properties>
