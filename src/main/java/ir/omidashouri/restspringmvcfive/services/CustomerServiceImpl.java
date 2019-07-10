@@ -3,9 +3,11 @@ package ir.omidashouri.restspringmvcfive.services;
 import ir.omidashouri.restspringmvcfive.domain.Customer;
 import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 
