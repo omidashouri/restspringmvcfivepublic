@@ -13,7 +13,7 @@ public class Customer {
     @SequenceGenerator(name="customer_generator", sequenceName = "customer_sequence")
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
-    private String name;
+    private String firstName;
     private String lastName;
 
 
