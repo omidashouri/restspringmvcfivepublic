@@ -3,11 +3,13 @@ package ir.omidashouri.restspringmvcfive.bootstrap;
 import ir.omidashouri.restspringmvcfive.domain.Customer;
 import ir.omidashouri.restspringmvcfive.domain.FakeCustomer;
 import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class BootStrapData implements CommandLineRunner {
 
@@ -33,7 +35,7 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println("Loading Customer Data");
+        log.info("Loading Customer Data");
 
         customer1.setFirstName("Michale");
         customer1.setLastName("Weston");
@@ -55,13 +57,7 @@ public class BootStrapData implements CommandLineRunner {
         customer4.setLastName(fakeCustomer.getLastName());
         customerRepository.save(customer4);
 
-
-        System.out.println("Customers saved: " + customerRepository.count());
-
+        log.info("Customers saved: " + customerRepository.count());
     }
-
-
-
-//    22:50
 
 }
