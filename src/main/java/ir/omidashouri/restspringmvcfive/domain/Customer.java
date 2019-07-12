@@ -1,11 +1,14 @@
 package ir.omidashouri.restspringmvcfive.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -16,5 +19,10 @@ public class Customer {
     private String firstName;
     private String lastName;
 
+
+    public Customer(String firstName,String lastName){
+        this.firstName=firstName;
+        this.lastName=lastName;
+    }
 
 }

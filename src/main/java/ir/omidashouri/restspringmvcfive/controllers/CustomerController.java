@@ -14,7 +14,6 @@ public class CustomerController {
 
     public static final String BASE_URL = "/api/vl/customers";
 
-
     private final CustomerService customerService;
 
     @Autowired
