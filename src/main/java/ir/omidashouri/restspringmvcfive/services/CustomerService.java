@@ -3,6 +3,7 @@ package ir.omidashouri.restspringmvcfive.services;
 import ir.omidashouri.restspringmvcfive.domain.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
 
@@ -11,4 +12,5 @@ public interface CustomerService {
     List<Customer> findAllCustomers();
 
 
+    Customer saveCustomer(Customer customer);
 }

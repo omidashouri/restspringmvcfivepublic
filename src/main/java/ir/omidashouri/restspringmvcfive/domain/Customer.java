@@ -17,8 +17,4 @@ public class Customer {
     private String lastName;
 
 
-
-//    16:14
-
-
 }

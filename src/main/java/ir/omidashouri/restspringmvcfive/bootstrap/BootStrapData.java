@@ -11,10 +11,12 @@ public class BootStrapData implements CommandLineRunner {
 
 
     private final CustomerRepository customerRepository;
+    private Customer customer1;
 
     @Autowired
     public BootStrapData(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
+        this.customer1 = new Customer();
     }
 
     @Override
@@ -22,7 +24,6 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Loading Customer Data");
 
-        Customer customer1 = new Customer();
         customer1.setFirstName("Michale");
         customer1.setLastName("Weston");
         customerRepository.save(customer1);
