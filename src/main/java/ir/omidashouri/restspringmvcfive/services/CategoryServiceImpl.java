@@ -4,10 +4,12 @@ import ir.omidashouri.restspringmvcfive.mapper.CategoryMapper;
 import ir.omidashouri.restspringmvcfive.model.CategoryDTO;
 import ir.omidashouri.restspringmvcfive.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
 
