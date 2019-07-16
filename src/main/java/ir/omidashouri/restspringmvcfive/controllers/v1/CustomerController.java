@@ -1,18 +1,22 @@
-package ir.omidashouri.restspringmvcfive.controllers;
+package ir.omidashouri.restspringmvcfive.controllers.v1;
 
 import ir.omidashouri.restspringmvcfive.domain.Customer;
+import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
+import ir.omidashouri.restspringmvcfive.model.CustomerListDTO;
 import ir.omidashouri.restspringmvcfive.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(value = CustomerController.BASE_URL)
 public class CustomerController {
 
-    public static final String BASE_URL = "/api/vl/customers";
+    public static final String BASE_URL = "/api/v1/customers";
 
     private final CustomerService customerService;
 
@@ -26,6 +30,16 @@ public class CustomerController {
         return customerService.findAllCustomers();
     }
 
+    @GetMapping
+    public ResponseEntity<CustomerListDTO> getListOfCustomersDto(){
+        return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomersDto()),
+                HttpStatus.OK);
+    }
+
+    @GetMapping(value = "{id}")
+    public ResponseEntity<CustomerDTO> getCustomerDtoById(@PathVariable Long id){
+        return new ResponseEntity<Customer>(customerService.getCustomerDtoById(id),HttpStatus.OK);
+    }
 
     @GetMapping(value = "/{id}")
     public Customer getCustomerById(@PathVariable Long id){
