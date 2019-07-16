@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = CustomerController.BASE_URL)
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
     public static final String BASE_URL = "/api/v1/customers";
@@ -25,7 +25,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
+//    @GetMapping
     List<Customer> getAllCustomers(){
         return customerService.findAllCustomers();
     }
@@ -38,7 +38,7 @@ public class CustomerController {
 
     @GetMapping(value = "{id}")
     public ResponseEntity<CustomerDTO> getCustomerDtoById(@PathVariable Long id){
-        return new ResponseEntity<Customer>(customerService.getCustomerDtoById(id),HttpStatus.OK);
+        return new ResponseEntity<CustomerDTO>(customerService.getCustomerDtoById(id),HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

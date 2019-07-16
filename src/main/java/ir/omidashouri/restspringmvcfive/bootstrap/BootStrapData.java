@@ -52,12 +52,16 @@ public class BootStrapData implements CommandLineRunner {
         customer3.setLastName("Gilendrn");
         customerRepository.save(customer3);
 
+        loadMoreCustomers();
+
+        log.info("Customers saved: " + customerRepository.count());
+    }
+
+    private void loadMoreCustomers() {
         Customer customer4 = new Customer();
         customer4.setFirstName(fakeCustomer.getFirstName());
         customer4.setLastName(fakeCustomer.getLastName());
         customerRepository.save(customer4);
-
-        log.info("Customers saved: " + customerRepository.count());
     }
 
 }

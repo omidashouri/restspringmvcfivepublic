@@ -1,6 +1,7 @@
 package ir.omidashouri.restspringmvcfive.services;
 
 import ir.omidashouri.restspringmvcfive.domain.Customer;
+import ir.omidashouri.restspringmvcfive.mapper.CustomerMapper;
 import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -19,6 +19,7 @@ public class CustomerServiceImplTest {
     CustomerServiceImpl customerService;
     Customer customer;
     List<Customer> customerData;
+    CustomerMapper customerMapper;
 
     @Mock
     CustomerRepository customerRepository;
@@ -26,8 +27,9 @@ public class CustomerServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        customerMapper = CustomerMapper.INSTANCE;
 
-        customerService = new CustomerServiceImpl(customerRepository);
+        customerService = new CustomerServiceImpl(customerRepository, customerMapper);
         customer = new Customer();
         customerData = new ArrayList<>();
 
@@ -55,4 +57,6 @@ public class CustomerServiceImplTest {
     @Test
     public void saveCustomer() {
     }
+
+
 }

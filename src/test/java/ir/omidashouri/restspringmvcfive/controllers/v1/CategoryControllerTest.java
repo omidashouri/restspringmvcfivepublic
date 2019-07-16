@@ -1,5 +1,6 @@
-package ir.omidashouri.restspringmvcfive.controllers;
+package ir.omidashouri.restspringmvcfive.controllers.v1;
 
+import ir.omidashouri.restspringmvcfive.controllers.v1.CategoryController;
 import ir.omidashouri.restspringmvcfive.model.CategoryDTO;
 import ir.omidashouri.restspringmvcfive.services.CategoryService;
 import org.hamcrest.CoreMatchers;
