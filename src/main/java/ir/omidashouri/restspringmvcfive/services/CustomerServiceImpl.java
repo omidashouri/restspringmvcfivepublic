@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .findAll()
                 .stream()
                 .map(cust->{
-                    CustomerDTO customerDto = customerMapper.cutomerToCustomerDTO(cust);
+                    CustomerDTO customerDto = customerMapper.customerToCustomerDTO(cust);
                     customerDto.setCustomerUrl("/api/v1/customers/"+cust.getId());
                     return customerDto;
                 })
@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDTO getCustomerDtoById(Long id) {
         return customerRepository
                 .findById(id)
-                .map(customerMapper::cutomerToCustomerDTO)
+                .map(customerMapper::customerToCustomerDTO)
                 .get();
     }
 }
