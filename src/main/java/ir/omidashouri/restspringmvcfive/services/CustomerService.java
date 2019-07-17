@@ -19,4 +19,6 @@ public interface CustomerService {
     CustomerDTO getCustomerDtoById(Long id);
 
     CustomerDTO createNewCustomer(CustomerDTO customerDTO);
+
+    CustomerDTO saveCustomerByDTO(Long id, CustomerDTO customerDTO);
 }
