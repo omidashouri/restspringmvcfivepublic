@@ -36,9 +36,14 @@ public class CustomerController {
                 HttpStatus.OK);
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<CustomerDTO> getCustomerDtoById(@PathVariable Long id){
         return new ResponseEntity<CustomerDTO>(customerService.getCustomerDtoById(id),HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<CustomerDTO> createNewCustomerDto(@RequestBody CustomerDTO customerDTO){
+        return new ResponseEntity<CustomerDTO>(customerService.createNewCustomer(customerDTO),HttpStatus.CREATED);
     }
 
 //    @GetMapping(value = "/{id}")
@@ -46,8 +51,8 @@ public class CustomerController {
         return customerService.findCustomerById(id);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+/*    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)*/
     public Customer saveCustomer(@RequestBody Customer customer){
         return customerService.saveCustomer(customer);
     }

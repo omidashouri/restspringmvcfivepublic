@@ -2,7 +2,6 @@ package ir.omidashouri.restspringmvcfive.controllers.v1;
 
 import ir.omidashouri.restspringmvcfive.mapper.CustomerMapper;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
-import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
 import ir.omidashouri.restspringmvcfive.services.CustomerService;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
@@ -14,10 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
 
 public class CustomerControllerTest {
 
@@ -81,6 +78,33 @@ public class CustomerControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/customers/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName", CoreMatchers.equalTo("omid1")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.firstname", CoreMatchers.equalTo("omid1")));
     }
+
+    @Test
+    public void createNewCustomerDto() throws Exception {
+
+//        given
+        CustomerDTO argumentDto = new CustomerDTO();
+        argumentDto.setFirstName("omid1");
+        argumentDto.setLastName("ashouri1");
+
+        CustomerDTO returnDto = new CustomerDTO();
+        returnDto.setFirstName(argumentDto.getFirstName());
+        returnDto.setLastName(argumentDto.getLastName());
+        returnDto.setCustomerUrl("/api/v1/customers/1");
+
+//        when
+        Mockito.when(customerService.createNewCustomer(argumentDto)).thenReturn(returnDto);
+
+//        then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/customers/")
+        .contentType(MediaType.APPLICATION_JSON)
+                .content(AbstractRestControllerTest.asJsonString(argumentDto)))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.firstname",Matchers.equalTo("omid1")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.customer_url", Matchers.equalTo("/api/v1/customers/1")))
+                .andReturn().getResponse().getContentAsString();
+    }
+
 }

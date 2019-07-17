@@ -1,5 +1,6 @@
 package ir.omidashouri.restspringmvcfive.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,5 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class CustomerListDTO {
 
+    @JsonProperty("customers")
     private List<CustomerDTO> customersDTO;
 }
