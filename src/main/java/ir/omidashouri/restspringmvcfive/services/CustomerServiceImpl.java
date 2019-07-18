@@ -89,4 +89,22 @@ public class CustomerServiceImpl implements CustomerService {
 
         return this.saveAndReturnDTO(customer);
     }
+
+    // patch mean just update changed value and leave other alone
+    @Override
+    public CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) {
+
+        return customerRepository.findById(id).map(customer -> {
+
+            if(null!=customerDTO.getFirstName()){
+                customer.setFirstName(customerDTO.getFirstName());
+            }
+            if(null!=customerDTO.getLastName()){
+                customer.setLastName(customerDTO.getLastName());
+            }
+
+            return customerMapper.customerToCustomerDTO(customerRepository.save(customer));
+        }).orElseThrow(RuntimeException::new);
+
+    }
 }

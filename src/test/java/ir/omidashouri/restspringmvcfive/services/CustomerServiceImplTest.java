@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 public class CustomerServiceImplTest {
 
-    CustomerServiceImpl customerService;
+    CustomerService customerService;
     Customer customer;
     List<Customer> customerData;
     CustomerMapper customerMapper;
