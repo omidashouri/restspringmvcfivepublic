@@ -1,8 +1,10 @@
 package ir.omidashouri.restspringmvcfive.controllers.v1;
 
+import ir.omidashouri.restspringmvcfive.controllers.RestResponseEntityExceptionHandler;
 import ir.omidashouri.restspringmvcfive.mapper.CustomerMapper;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
 import ir.omidashouri.restspringmvcfive.services.CustomerService;
+import ir.omidashouri.restspringmvcfive.services.ResourceNotFoundException;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -10,7 +12,6 @@ import org.junit.Test;
 import org.mockito.*;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -36,7 +37,9 @@ public class CustomerControllerTest {
 
         customerMapper = CustomerMapper.INSTANCE;
 
-        mockMvc = MockMvcBuilders.standaloneSetup(customerController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(customerController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @Test
@@ -172,5 +175,16 @@ public class CustomerControllerTest {
 
         Mockito.verify(customerService).deleteCustomerById(ArgumentMatchers.anyLong());
     }
+
+    @Test
+    public void testGetByIdNotFound() throws Exception{
+
+        Mockito.when(customerService.getCustomerDtoById(ArgumentMatchers.anyLong())).thenThrow(ResourceNotFoundException.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.get(CustomerController.BASE_URL+"/55")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
 
 }

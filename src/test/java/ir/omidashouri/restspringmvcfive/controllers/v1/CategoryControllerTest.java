@@ -1,8 +1,10 @@
 package ir.omidashouri.restspringmvcfive.controllers.v1;
 
+import ir.omidashouri.restspringmvcfive.controllers.RestResponseEntityExceptionHandler;
 import ir.omidashouri.restspringmvcfive.controllers.v1.CategoryController;
 import ir.omidashouri.restspringmvcfive.model.CategoryDTO;
 import ir.omidashouri.restspringmvcfive.services.CategoryService;
+import ir.omidashouri.restspringmvcfive.services.ResourceNotFoundException;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -38,7 +40,9 @@ public class CategoryControllerTest {
 //        no need to bellow with @InjectMocks
 //        categoryController = new CategoryController(categoryService);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(categoryController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @Test
@@ -88,6 +92,16 @@ public class CategoryControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", CoreMatchers.equalTo(NAME1)));
 
+    }
+
+    @Test
+    public void testGetByNameNotFound() throws Exception{
+
+        Mockito.when(categoryService.getCategoryByName(ArgumentMatchers.anyString())).thenThrow(ResourceNotFoundException.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/categories/foo")
+        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
 }
