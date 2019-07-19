@@ -57,7 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository
                 .findById(id)
                 .map(customerMapper::customerToCustomerDTO)
-                .get();
+                .map(customerDTO -> {
+                    customerDTO.setCustomerUrl("/api/v1/customers/"+id);
+                    return customerDTO;
+                })
+                .orElseThrow(RuntimeException::new);
     }
 
     @Override
@@ -109,6 +113,12 @@ public class CustomerServiceImpl implements CustomerService {
 
             return returnCustomerDTO;
         }).orElseThrow(RuntimeException::new);
+
+    }
+
+    @Override
+    public void deleteCustomerById(Long id) {
+        customerRepository.deleteById(id);
 
     }
 }

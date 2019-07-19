@@ -163,4 +163,14 @@ public class CustomerControllerTest {
             .andExpect(MockMvcResultMatchers.jsonPath("$.customer_url",Matchers.equalTo("/api/v1/customers/1")));
     }
 
+    @Test
+    public void testDeleteCustomer() throws Exception{
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/customers/1")
+        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Mockito.verify(customerService).deleteCustomerById(ArgumentMatchers.anyLong());
+    }
+
 }

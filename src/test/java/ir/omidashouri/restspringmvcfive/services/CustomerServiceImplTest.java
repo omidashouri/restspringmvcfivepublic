@@ -130,4 +130,14 @@ public class CustomerServiceImplTest {
     }
 
 
+    @Test
+    public void testDeleteCustomerById() {
+
+//        given
+        Long id = 1L;
+//        when
+        customerRepository.deleteById(id);
+//        then
+        Mockito.verify(customerRepository,Mockito.times(1)).deleteById(ArgumentMatchers.anyLong());
+    }
 }
