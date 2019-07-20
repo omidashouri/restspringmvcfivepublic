@@ -61,6 +61,7 @@ public class CustomerControllerTest {
 
 //        result
         mockMvc.perform(MockMvcRequestBuilders.get(CustomerController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.customers", Matchers.hasSize(2)));
@@ -80,6 +81,7 @@ public class CustomerControllerTest {
 
 //        then
         mockMvc.perform(MockMvcRequestBuilders.get(CustomerController.BASE_URL+"/1")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.firstname", CoreMatchers.equalTo("omid1")));
@@ -103,6 +105,7 @@ public class CustomerControllerTest {
 
 //        then
         mockMvc.perform(MockMvcRequestBuilders.post(CustomerController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
                 .content(AbstractRestControllerTest.asJsonString(argumentDto)))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -130,6 +133,7 @@ public class CustomerControllerTest {
 
 //        then
         mockMvc.perform(MockMvcRequestBuilders.put(CustomerController.BASE_URL+"/1")
+                .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
         .content(AbstractRestControllerTest.asJsonString(argumentDto)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -158,6 +162,7 @@ public class CustomerControllerTest {
 
 //        then
     mockMvc.perform(MockMvcRequestBuilders.patch(CustomerController.BASE_URL+"/1")
+            .accept(MediaType.APPLICATION_JSON)
     .contentType(MediaType.APPLICATION_JSON)
     .content(AbstractRestControllerTest.asJsonString(givenDto)))
             .andExpect(MockMvcResultMatchers.status().isOk())

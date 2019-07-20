@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 //@Controller
+
 @RestController
 @RequestMapping(CategoryController.CATEGORIES_URL)
 public class CategoryController {
@@ -59,6 +60,16 @@ public class CategoryController {
     *
     *
     * because in rest we need Object for JASON but in MVC we need string
+    * */
+
+    /*
+    *
+    * key value in postman should be:
+    * Content-Type : application/xml
+    * Accept : application/xml
+    *
+    * content-type is for server and accept is for client, but in controller the annotation should be @RestController
+    *
     * */
 
 }
