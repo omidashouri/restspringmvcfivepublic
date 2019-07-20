@@ -19,16 +19,27 @@
     <description>RESTful Webservices with Spring MVC 5 Guru</description>
 
     <properties>
-        <jaxb2.version>2.3.1</jaxb2.version>
+        <jaxb2.version>2.5.0</jaxb2.version>
     </properties>
 
-<!--    <dependencies>
+<!--   three dependency is needed if we use jaxb2 with java 11 -->
+    <dependencies>
         <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
             <version>2.3.2</version>
         </dependency>
-    </dependencies>-->
+    </dependencies>
 
     <build>
         <plugins>
@@ -48,6 +59,7 @@
                     <!-- The package of your generated sources -->
                   <packageName>ir.omidashouri.restspringmvcfive</packageName>
                     <sources>
+<!--                        change slash for linux-->
                         <source>src\main\resources\xsd</source>
                     </sources>
                 </configuration>
