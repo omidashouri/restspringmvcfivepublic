@@ -6,7 +6,7 @@
     <groupId>ir.omidashouri</groupId>
     <artifactId>restspringmvcfive-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <!--    name display in maven chart -->
     <name>restspringmvcfive-parent</name>
@@ -71,10 +71,10 @@
 
     <build>
         <plugins>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin>-->
             <!--            use for integration test in verify scope-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
