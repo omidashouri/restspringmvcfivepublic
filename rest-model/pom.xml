@@ -60,7 +60,7 @@
                   <packageName>ir.omidashouri.restspringmvcfive</packageName>
                     <sources>
 <!--                        change slash for linux-->
-                        <source>src\main\resources\xsd</source>
+                        <source>src/main/resources/xsd</source>
                     </sources>
                 </configuration>
             </plugin>
