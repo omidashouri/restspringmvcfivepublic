@@ -29,6 +29,12 @@
     </properties>
 
     <dependencies>
+<!--        create dependency to other module in order to use customer object which created there-->
+        <dependency>
+            <groupId>ir.omidashouri</groupId>
+            <artifactId>rest-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
