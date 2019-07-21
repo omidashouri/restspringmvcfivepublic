@@ -6,7 +6,7 @@
     <groupId>ir.omidashouri</groupId>
     <artifactId>restspringmvcfive-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <!--    name display in maven chart -->
     <name>restspringmvcfive-parent</name>
