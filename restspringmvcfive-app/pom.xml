@@ -143,10 +143,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${org.apache.maven.plugins.compiler.version}</version> <!-- or newer version -->
+                <version>3.8.1</version> <!-- or newer version -->
                 <configuration>
-                    <source>${java.version}</source> <!-- depending on your project -->
-                    <target>${java.version}</target> <!-- depending on your project -->
+                    <source>11.0.2</source> <!-- depending on your project -->
+                    <target>11.0.2</target> <!-- depending on your project -->
 <!--                    <fork>true</fork>
                     <executable>C:\Program Files\Java\jdk1.8.0_31\bin\javac</executable>-->
                     <annotationProcessorPaths>
