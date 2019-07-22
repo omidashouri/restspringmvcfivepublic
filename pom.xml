@@ -175,6 +175,21 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+ <!--               <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>jacoco-report</id>
                         <phase>test</phase>
@@ -182,13 +197,13 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                    <!-- Add this checking -->
+                    &lt;!&ndash; Add this checking &ndash;&gt;
                     <execution>
                         <id>jacoco-check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
-<!--                        <configuration>
+                        <configuration>
                             <rules>
                                 <rule>
                                     <element>PACKAGE</element>
@@ -201,10 +216,9 @@
                                     </limits>
                                 </rule>
                             </rules>
-                        </configuration>-->
+                        </configuration>
                     </execution>
-
-                </executions>
+                </executions>-->
             </plugin>
 
             <!--        copy from sample : store_test_results-->
