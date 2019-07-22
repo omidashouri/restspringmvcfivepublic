@@ -85,10 +85,25 @@
 
     <build>
         <plugins>
-<!--            <plugin>
+<!--            add 'executions' part to enable test in multi modul pom-->
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
+                <configuration>
+                    <mainClass>ir.omidashouri.restspringmvcfive.RestfulSpringMvcMainApp</mainClass>
+                    <outputDirectory>webapps</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>exec</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!--            use for integration test in verify scope-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -112,9 +127,8 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            Cobertura is a free Java tool that calculates the percentage of code accessed by tests. It can be used to identify which parts of your Java program are lacking test coverage.-->
-            <!--not suported by java 11-->
-<!--            <plugin>
+            <!--            Cobertura is a free Java tool that calculates the percentage of code accessed by tests. It can be used to identify which parts of your Java program are lacking test coverage.-->
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>${org.codehaus.mojo.version}</version>
@@ -125,7 +139,7 @@
                     </formats>
                     <check/>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
             <!--        copy from sample : store_test_results-->
             <plugin>
@@ -135,21 +149,11 @@
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
-                <dependencies>
-<!--                    add for java 11-->
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <!--           7.0 is lates            -->
-                        <version>6.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <!--MapStruct plugin work with lombok annotation-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-
                 <version>3.8.1</version> <!-- or newer version -->
                 <configuration>
                     <source>11</source> <!-- depending on your project -->
@@ -174,50 +178,6 @@
                         </compilerArg>
                     </compilerArgs>
                 </configuration>
-<!--                add for java 11-->
-                <dependencies>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <!--           7.0 is lates            -->
-                        <version>6.2</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>ro.isdc.wro4j</groupId>
-                <artifactId>wro4j-maven-plugin</artifactId>
-                <version>${wro4j.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
-                    <cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
-                    <wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
-                    <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
-                    <contextFolder>${basedir}/src/main/less</contextFolder>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.webjars</groupId>
-                        <artifactId>bootstrap</artifactId>
-                        <version>${webjars-bootstrap.version}</version>
-                    </dependency>
-
-                    <dependency>
-                        <groupId>org.mockito</groupId>
-                        <artifactId>mockito-core</artifactId>
-                        <version>2.20.0</version>
-                    </dependency>
-
-                </dependencies>
             </plugin>
         </plugins>
     </build>
