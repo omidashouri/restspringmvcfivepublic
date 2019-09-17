@@ -20,6 +20,7 @@
 
     <properties>
         <jaxb2.version>2.5.0</jaxb2.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 <!--   three dependency is needed if we use jaxb2 with java 11 -->
@@ -75,6 +76,18 @@
                         <source>src/main/resources/xsd</source>
                     </sources>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--         add executions in order to  package pet-clinic-data module without jar files      -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
