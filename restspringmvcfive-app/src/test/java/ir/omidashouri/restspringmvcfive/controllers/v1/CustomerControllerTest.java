@@ -112,6 +112,14 @@ public class CustomerControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.firstname",Matchers.equalTo("omid1")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.customer_url", Matchers.equalTo(CustomerController.BASE_URL+"/1")))
                 .andReturn().getResponse().getContentAsString();
+
+//        Use for Debug
+/*        String responseDebug = mockMvc.perform(MockMvcRequestBuilders.post(CustomerController.BASE_URL)
+                            .accept(MediaType.APPLICATION_JSON)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(AbstractRestControllerTest.asJsonString(argumentDto)))
+                            .andReturn().getResponse().getContentAsString();
+        System.out.println(responseDebug);*/
     }
 
     @Test
