@@ -8,9 +8,7 @@ import ir.omidashouri.restspringmvcfive.repositories.CategoryRepository;
 import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
-import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +23,8 @@ import java.util.List;
 @DataJpaTest
 @Slf4j
 public class CustomerServiceImplIT {
+
+//    this is Integration Test we have @DataJpaTest annotation
 
     @Autowired
     CustomerRepository customerRepository;
