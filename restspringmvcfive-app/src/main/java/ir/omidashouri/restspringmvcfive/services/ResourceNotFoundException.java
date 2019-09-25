@@ -2,6 +2,8 @@ package ir.omidashouri.restspringmvcfive.services;
 
 public class ResourceNotFoundException extends RuntimeException {
 
+//    Exception Handling for Service
+
     public ResourceNotFoundException() {
     }
 
