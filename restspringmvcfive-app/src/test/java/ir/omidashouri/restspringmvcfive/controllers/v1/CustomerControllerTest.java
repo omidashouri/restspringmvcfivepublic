@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import java.util.Arrays;
 
 
@@ -186,6 +187,7 @@ public class CustomerControllerTest {
         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
+//        verify if this method is running
         Mockito.verify(customerService).deleteCustomerById(ArgumentMatchers.anyLong());
     }
 
