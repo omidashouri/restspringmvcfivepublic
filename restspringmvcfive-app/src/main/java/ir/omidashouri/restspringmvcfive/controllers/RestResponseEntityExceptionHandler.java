@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+//    exception handler here specify which method invoke this method
+
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<Object> handleNotFoundException(Exception exception, WebRequest webRequest){
         return new ResponseEntity<Object>("Resource Not Found", new HttpHeaders(), HttpStatus.NOT_FOUND);

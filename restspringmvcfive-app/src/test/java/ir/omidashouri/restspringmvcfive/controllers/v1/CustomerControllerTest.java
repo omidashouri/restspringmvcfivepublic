@@ -38,6 +38,8 @@ public class CustomerControllerTest {
 
         customerMapper = CustomerMapper.INSTANCE;
 
+//        add implemented exception class here
+
         mockMvc = MockMvcBuilders.standaloneSetup(customerController)
                 .setControllerAdvice(new RestResponseEntityExceptionHandler())
                 .build();
