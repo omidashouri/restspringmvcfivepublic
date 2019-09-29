@@ -1,11 +1,14 @@
 package ir.omidashouri.restspringmvcfive.services;
 
 import ir.omidashouri.restspringmvcfive.bootstrap.BootStrapData;
+import ir.omidashouri.restspringmvcfive.bootstrap.BootStrapVendor;
 import ir.omidashouri.restspringmvcfive.domain.Customer;
 import ir.omidashouri.restspringmvcfive.mapper.CustomerMapper;
+import ir.omidashouri.restspringmvcfive.mapper.VendorMapper;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
 import ir.omidashouri.restspringmvcfive.repositories.CategoryRepository;
 import ir.omidashouri.restspringmvcfive.repositories.CustomerRepository;
+import ir.omidashouri.restspringmvcfive.repositories.VendorRepository;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.Matchers;
@@ -32,7 +35,12 @@ public class CustomerServiceImplIT {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    VendorRepository vendorRepository;
+
     CustomerService customerService;
+
+    VendorService vendorService;
 
     @Before
     public void setup() throws Exception {
@@ -46,6 +54,13 @@ public class CustomerServiceImplIT {
 
         customerService = new CustomerServiceImpl(customerRepository, CustomerMapper.INSTANCE);
 
+        log.info("Loading Vendor Data");
+        log.info(String.valueOf(vendorRepository.findAll().size()));
+
+        BootStrapVendor bootStrapVendor = new BootStrapVendor(vendorRepository);
+        bootStrapVendor.run();
+
+        vendorService = new VendorServiceImpl(VendorMapper.INSTANCE,vendorRepository);
     }
 
     @Test
