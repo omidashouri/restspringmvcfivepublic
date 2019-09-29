@@ -1,5 +1,7 @@
 package ir.omidashouri.restspringmvcfive.controllers.v1;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import ir.omidashouri.restspringmvcfive.domain.Customer;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
 import ir.omidashouri.restspringmvcfive.model.CustomerListDTO;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "Customer-Controller")
 @Controller
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -30,6 +33,7 @@ public class CustomerController {
         return customerService.findAllCustomers();
     }
 
+    @ApiOperation(value = "This will get list of customers.",notes = "These are some notes about API")
     @GetMapping
     public ResponseEntity<CustomerListDTO> getListOfCustomersDto(){
         return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomersDto()),

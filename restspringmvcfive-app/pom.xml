@@ -21,6 +21,7 @@
     <properties>
 
 <!--        <org.apache.maven.plugins.compiler.version>3.8.1</org.apache.maven.plugins.compiler.version>-->
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
     </properties>
 
     <dependencies>
@@ -68,6 +69,18 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+<!-->   Add Swagger to the project        -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+<!--<   Add Swagger to the project        -->
 <!--              two XML content generator dependencies    -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
