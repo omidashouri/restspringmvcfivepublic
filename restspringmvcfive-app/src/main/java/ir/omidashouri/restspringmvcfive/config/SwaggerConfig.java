@@ -25,7 +25,8 @@ public class SwaggerConfig { //extends WebMvcConfigurationSupport {
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
-                .tags(new Tag("Customer-Controller", "Api annotation: This is Customer Controller"))
+                .tags(new Tag("Customer-Controller", "Api annotation: This is Customer Controller"),
+                        new Tag("Vendor Controller","This is my Vendor API"))
                 .apiInfo(metaData());
     }
 
