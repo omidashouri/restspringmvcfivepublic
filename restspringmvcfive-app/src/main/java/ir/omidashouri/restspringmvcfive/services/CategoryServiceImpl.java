@@ -1,5 +1,6 @@
 package ir.omidashouri.restspringmvcfive.services;
 
+import ir.omidashouri.restspringmvcfive.controllers.v1.CategoryController;
 import ir.omidashouri.restspringmvcfive.mapper.CategoryMapper;
 import ir.omidashouri.restspringmvcfive.model.CategoryDTO;
 import ir.omidashouri.restspringmvcfive.repositories.CategoryRepository;
@@ -35,5 +36,20 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDTO getCategoryByName(String name)
     {
         return categoryMapper.categoryToCategoryDTO(categoryRepository.findByName(name));
+    }
+
+    @Override
+    public CategoryDTO getCategoryDtoById(Long id) {
+        return categoryRepository.findById(id)
+                .map(categoryMapper::categoryToCategoryDTO)
+                .map(categoryDTO -> {
+                    categoryDTO.setCategoryUrl(getCategoryUrl(id));
+                    return categoryDTO;
+                })
+                .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    private String getCategoryUrl(Long id) {
+        return CategoryController.CATEGORIES_URL + "/" + id;
     }
 }

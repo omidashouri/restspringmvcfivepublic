@@ -5,14 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryListDTO {
+public class ProductDTO {
 
-    @JsonProperty("categories")
-    List<CategoryDTO> categoryDTOList;
+    @JsonProperty("name")
+    private String name;
 
+    @JsonProperty("product_url")
+    private String productUrl;
 }

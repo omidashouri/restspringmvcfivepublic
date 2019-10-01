@@ -5,9 +5,8 @@ import ir.omidashouri.restspringmvcfive.model.CategoryDTO;
 import ir.omidashouri.restspringmvcfive.model.CategoryListDTO;
 import ir.omidashouri.restspringmvcfive.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 //@Controller
@@ -21,7 +20,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @Autowired
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

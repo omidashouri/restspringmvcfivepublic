@@ -14,6 +14,15 @@ public interface CategoryMapper {
 
     @Mappings({
             @Mapping(source= "id",target = "id"),
-            @Mapping(source ="name",target ="name")})
+            @Mapping(source ="name",target ="name"),
+            @Mapping(source = "categoryUrl",target = "categoryUrl")
+    })
     CategoryDTO categoryToCategoryDTO(Category category);
+
+    @Mappings({
+            @Mapping(source = "id",target = "id"),
+            @Mapping(source = "name",target = "name"),
+            @Mapping(source = "categoryUrl",target = "categoryUrl")
+    })
+    Category categoryDtoToCategory(CategoryDTO categoryDTO);
 }

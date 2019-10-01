@@ -10,9 +10,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryListDTO {
+public class ProductListDTO {
 
-    @JsonProperty("categories")
-    List<CategoryDTO> categoryDTOList;
+    @JsonProperty("products")
+    private List<ProductDTO> productsDTO;
 
 }
