@@ -43,6 +43,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+<!-->        Webjars for jQuery and Bootstrap   -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-datepicker</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>1.11.1</version>
+        </dependency>
+<!--<        Webjars for jQuery and Bootstrap   -->
 <!--        copy from sample-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,7 +90,7 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
-<!-->   Add Swagger to the project        -->
+<!-->   Add Swagger to the project, document for  Rest web service     -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -80,7 +101,7 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-swagger.version}</version>
         </dependency>
-<!--<   Add Swagger to the project        -->
+<!--<   Add Swagger to the project, document for  Rest web service       -->
 <!--              two XML content generator dependencies    -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>

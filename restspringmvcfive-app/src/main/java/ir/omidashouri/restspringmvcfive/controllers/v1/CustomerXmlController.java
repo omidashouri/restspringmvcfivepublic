@@ -1,11 +1,14 @@
 package ir.omidashouri.restspringmvcfive.controllers.v1;
 
-import ir.omidashouri.restspringmvcfive.domain.Customer;
 import ir.omidashouri.restspringmvcfive.model.CustomerDTO;
 import ir.omidashouri.restspringmvcfive.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class CustomerXmlController {
     private final CustomerService customerService;
 
     @Autowired
-    public CustomerXmlController(CustomerService customerService) {
+    public CustomerXmlController(@Qualifier("customerServiceImpl") CustomerService customerService) {
         this.customerService = customerService;
     }
 
